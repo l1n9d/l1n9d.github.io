@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lingling Deng — Data &amp; Analytics Engineer</title>
+<meta name="description" content="Data and analytics engineer in the Bay Area. Ten years in financial operations, now building CDC pipelines, dbt warehouses, and applied-AI systems.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#ECEDE8;
+  --surface:#FBFCF8;
+  --ink:#14181B;
+  --muted:#5F6664;
+  --rule:#CFD2CA;
+  --blue:#2138C4;
+  --flag:#B3271E;
+
+  --display:"Familjen Grotesk", system-ui, sans-serif;
+  --body:"Newsreader", Georgia, serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+
+  --rail:76px;
+  --pad:clamp(20px, 5vw, 64px);
+  --maxw:1180px;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:clamp(16px,1.05vw,18px);line-height:1.62;
+  font-variant-numeric:tabular-nums;
+}
+body.locked{overflow:hidden}
+a{color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(33,56,196,.32)}
+a:hover{border-bottom-color:var(--blue)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:2px}
+code{font-family:var(--mono);font-size:.86em;background:var(--paper);padding:1px 4px;border:1px solid var(--rule)}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--rule)}
+.topbar .wrap{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px}
+.mark{font-family:var(--display);font-weight:700;letter-spacing:-.02em;font-size:18px;border:0}
+.mark:hover{border:0}
+.navlinks{display:flex;gap:18px;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase}
+.navlinks a{color:var(--muted);border-bottom:1px solid transparent}
+.navlinks a:hover{color:var(--ink);border-bottom-color:var(--rule)}
+
+/* ---------- spine ---------- */
+.band{border-bottom:1px solid var(--rule)}
+.band:last-of-type{border-bottom:0}
+.band .wrap{display:grid;grid-template-columns:var(--rail) minmax(0,1fr)}
+.rail{position:relative;border-right:1px solid var(--rule)}
+.rail::after{content:"";position:absolute;left:100%;top:54px;width:9px;height:9px;transform:translate(-5px,0) rotate(45deg);background:var(--paper);border:1px solid var(--ink);transition:background .5s ease,border-color .5s ease}
+.band.is-live .rail::after{background:var(--blue);border-color:var(--blue)}
+.panel{padding:clamp(48px,7vw,92px) 0 clamp(48px,7vw,92px) clamp(20px,3.4vw,44px)}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 26px}
+.sectionhead{font-family:var(--display);font-weight:700;letter-spacing:-.022em;font-size:clamp(22px,2.5vw,30px);margin:0 0 10px}
+.sectionnote{color:var(--muted);max-width:58ch;margin:0 0 12px;font-size:.96em}
+
+/* ---------- hero ---------- */
+.thesis{font-family:var(--display);font-weight:500;font-size:clamp(30px,4.6vw,60px);line-height:1.06;letter-spacing:-.028em;margin:0 0 30px;max-width:19ch}
+.thesis em{font-style:normal;color:var(--blue)}
+.lede{max-width:60ch;margin:0}
+.lede + .lede{margin-top:14px}
+.facts{list-style:none;margin:34px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px 26px;font-family:var(--mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.facts li{position:relative;padding-left:15px}
+.facts li::before{content:"";position:absolute;left:0;top:.55em;width:5px;height:5px;background:var(--rule)}
+.facts li.open::before{background:var(--blue)}
+
+/* ---------- tile grid ---------- */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:clamp(16px,2vw,26px);margin-top:34px}
+.tile{
+  position:relative;display:flex;flex-direction:column;text-align:left;
+  background:var(--surface);border:1px solid var(--rule);border-radius:0;
+  padding:0;margin:0;font:inherit;color:inherit;cursor:pointer;
+  transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+.tile:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(20,24,27,.11);border-color:var(--ink)}
+.tile .art{display:block;width:100%;aspect-ratio:8/5;border-bottom:1px solid var(--rule)}
+.tile .plus{
+  position:absolute;top:0;left:0;right:0;aspect-ratio:8/5;
+  display:grid;place-items:center;opacity:0;transition:opacity .28s ease;
+  background:rgba(20,24,27,.55);color:#fff;font-family:var(--display);font-weight:400;font-size:44px;line-height:1;
+}
+.tile:hover .plus,.tile:focus-visible .plus{opacity:1}
+.tile-body{padding:20px 22px 24px}
+.tile-tag{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+.tile-title{font-family:var(--display);font-weight:500;font-size:1.22em;letter-spacing:-.018em;line-height:1.18;margin:0 0 8px}
+.tile-desc{margin:0;font-size:.95em;color:var(--muted);line-height:1.5}
+.tile-metric{margin:10px 0 0;font-size:.95em;font-weight:500;line-height:1.5}
+
+/* ---------- modal ---------- */
+.overlay{position:fixed;inset:0;z-index:60;background:rgba(20,24,27,.62);display:none;overflow-y:auto;padding:clamp(12px,5vh,60px) clamp(12px,4vw,40px)}
+.overlay.on{display:block}
+.sheet{max-width:820px;margin:0 auto;background:var(--paper);border:1px solid var(--ink);position:relative}
+.sheet-head{padding:clamp(26px,4vw,44px) clamp(24px,4vw,52px) 0}
+.sheet-body{padding:0 clamp(24px,4vw,52px) clamp(30px,4vw,52px)}
+.closebtn{position:sticky;top:0;float:right;margin:10px 10px 0 0;z-index:2;background:var(--paper);border:1px solid var(--rule);width:36px;height:36px;font-size:19px;line-height:1;cursor:pointer;color:var(--ink);font-family:var(--display)}
+.closebtn:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.sheet h2{font-family:var(--display);font-weight:500;font-size:clamp(23px,3vw,33px);letter-spacing:-.022em;line-height:1.14;margin:0 0 14px;max-width:26ch}
+.sheet .kicker{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin:0 0 14px}
+.sheet p{max-width:66ch}
+.sheet-stack{font-family:var(--mono);font-size:11.5px;line-height:1.9;color:var(--muted);margin:0 0 8px;padding:16px 0 0;border-top:1px solid var(--rule)}
+.sheet-metrics{font-family:var(--mono);font-size:11.5px;line-height:1.9;margin:0 0 24px}
+.sheet-metrics b{font-weight:500;color:var(--blue)}
+.note{margin:20px 0 0;padding:13px 0 13px 17px;border-left:2px solid var(--rule);font-size:.95em;color:var(--muted);max-width:66ch}
+.note .label{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);margin-bottom:5px}
+.note.incident{border-left-color:var(--flag)}
+.note.incident .label{color:var(--flag)}
+.links{margin:28px 0 0;display:flex;flex-wrap:wrap;gap:8px 24px;font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase}
+
+/* ---------- path ---------- */
+.path{list-style:none;margin:26px 0 0;padding:0;border-top:1px solid var(--ink)}
+.path li{display:grid;grid-template-columns:150px minmax(0,1fr);gap:clamp(14px,3vw,40px);padding:22px 0;border-bottom:1px solid var(--rule)}
+.when{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--muted);padding-top:.35em}
+.what strong{font-family:var(--display);font-weight:500;font-size:1.12em;letter-spacing:-.01em}
+.what span{display:block;color:var(--muted);font-size:.95em}
+
+/* ---------- stack ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:26px}
+.cell{background:var(--surface);padding:20px 22px}
+.cell h3{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin:0 0 10px;font-weight:500}
+.cell p{margin:0;font-size:.95em;line-height:1.65}
+
+/* ---------- contact ---------- */
+.contact-lines{list-style:none;margin:26px 0 0;padding:0;max-width:46ch}
+.contact-lines li{display:flex;justify-content:space-between;gap:20px;padding:11px 0;border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:12.5px}
+.contact-lines span{color:var(--muted);letter-spacing:.12em;text-transform:uppercase;font-size:10.5px;padding-top:.25em}
+footer{padding:26px 0 40px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* ---------- motion ---------- */
+.panel{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+.band.is-live .panel{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .panel{opacity:1;transform:none;transition:none}
+  .tile,.rail::after,.plus{transition:none}
+  .tile:hover{transform:none}
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:880px){.path li{grid-template-columns:1fr;gap:4px}.when{padding-top:0}}
+@media (max-width:640px){:root{--rail:26px}.navlinks{gap:12px;font-size:10.5px}.topbar .wrap{align-items:center}.thesis{max-width:100%}}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="mark" href="#top">Lingling Deng</a>
+    <nav class="navlinks" aria-label="Sections">
+      <a href="#work">Work</a><a href="#path">Path</a><a href="#stack">Stack</a><a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ INTRO ============ -->
+<section class="band" id="intro">
+  <div class="wrap">
+    <div class="rail" aria-hidden="true"></div>
+    <div class="panel">
+      <p class="eyebrow">Data &amp; Analytics Engineering — San Jose, CA</p>
+      <h1 class="thesis">I spent more than a decade inside financial operations. Now I build the <em>data systems</em> those operations run on.</h1>
+      <p class="lede">Eight years in middle-office analytics and financial crime at Société Générale, five as the lead data analyst at a CPA firm, then a computer science master's at Northeastern. The move from reading financial data to engineering it was deliberate — I already knew what the numbers were for.</p>
+      <p class="lede">Everything below is something I built end to end and can walk through line by line: the warehouse models, the orchestration, the tests, and the failures that taught me the most.</p>
+      <ul class="facts">
+        <li class="open">Open to full-time roles</li>
+        <li>M.S. Computer Science, Northeastern 2026</li>
+        <li>English &amp; Mandarin</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORK ============ -->
+<section class="band" id="work">
+  <div class="wrap">
+    <div class="rail" aria-hidden="true"></div>
+    <div class="panel">
+      <p class="eyebrow">Selected work</p>
+      <h2 class="sectionhead">Five systems, built end to end</h2>
+      <p class="sectionnote">Each runs on real infrastructure and ships with its own test suite. Click any project for the architecture, the decisions behind it, and what broke.</p>
+
+      <div class="tiles">
+
+        <!-- 1 -->
+        <button class="tile" data-project="cdc" aria-haspopup="dialog">
+          <svg class="art" viewBox="0 0 400 250" role="img" aria-label="Illustration: a database streaming change events into a layered warehouse">
+            <rect width="400" height="250" fill="#DEE3FB"/>
+            <ellipse cx="72" cy="92" rx="34" ry="12" fill="#2138C4"/>
+            <rect x="38" y="92" width="68" height="62" fill="#2138C4"/>
+            <ellipse cx="72" cy="154" rx="34" ry="12" fill="#16257E"/>
+            <ellipse cx="72" cy="116" rx="34" ry="12" fill="#16257E" opacity=".45"/>
+            <g fill="#14181B">
+              <rect x="128" y="112" width="15" height="15"/>
+              <rect x="160" y="96" width="15" height="15" opacity=".78"/>
+              <rect x="192" y="126" width="15" height="15" opacity=".62"/>
+              <rect x="224" y="104" width="15" height="15" opacity=".46"/>
+            </g>
+            <path d="M126 155 C 170 175, 210 175, 254 155" stroke="#2138C4" stroke-width="3" fill="none" stroke-dasharray="7 8"/>
+            <g>
+              <path d="M282 74 L364 74 L346 104 L264 104 Z" fill="#16257E"/>
+              <path d="M282 112 L364 112 L346 142 L264 142 Z" fill="#2138C4"/>
+              <path d="M282 150 L364 150 L346 180 L264 180 Z" fill="#5C71E0"/>
+            </g>
+          </svg>
+          <span class="plus" aria-hidden="true">+</span>
+          <span class="tile-body">
+            <span class="tile-tag">Streaming / CDC</span>
+            <span class="tile-title">E-commerce change data capture</span>
+            <span class="tile-desc">Postgres replicated to Snowflake in near-real time, with every historical version of a customer preserved.</span>
+            <span class="tile-metric">95 dbt tests. Two production incidents, both written up.</span>
+          </span>
+        </button>
+
+        <!-- 2 -->
+        <button class="tile" data-project="fred" aria-haspopup="dialog">
+          <svg class="art" viewBox="0 0 400 250" role="img" aria-label="Illustration: an economic trend line crossing a recession threshold">
+            <rect width="400" height="250" fill="#DCE8DF"/>
+            <line x1="40" y1="200" x2="364" y2="200" stroke="#2C6E49" stroke-width="2"/>
+            <line x1="40" y1="126" x2="364" y2="126" stroke="#2C6E49" stroke-width="1.5" stroke-dasharray="6 7" opacity=".55"/>
+            <path d="M40 178 L86 160 L128 172 L170 132 L212 148 L254 96 L296 110 L340 62" fill="none" stroke="#2C6E49" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+            <path d="M254 96 L296 110 L340 62 L340 126 L254 126 Z" fill="#B3271E" opacity=".18"/>
+            <circle cx="254" cy="96" r="7" fill="#B3271E"/>
+            <circle cx="340" cy="62" r="7" fill="#B3271E"/>
+            <circle cx="170" cy="132" r="7" fill="#2C6E49"/>
+            <g fill="#2C6E49">
+              <rect x="40" y="212" width="30" height="8"/>
+              <rect x="82" y="212" width="30" height="8" opacity=".6"/>
+              <rect x="124" y="212" width="30" height="8" opacity=".35"/>
+            </g>
+          </svg>
+          <span class="plus" aria-hidden="true">+</span>
+          <span class="tile-body">
+            <span class="tile-tag">Analytics engineering</span>
+            <span class="tile-title">Recession risk monitor</span>
+            <span class="tile-desc">Federal Reserve indicators modeled through dbt into five recession signals and a composite risk level.</span>
+            <span class="tile-metric">23 dbt tests, 14 pytest tests, zero failed runs.</span>
+          </span>
+        </button>
+
+        <!-- 3 -->
+        <button class="tile" data-project="nebula" aria-haspopup="dialog">
+          <svg class="art" viewBox="0 0 400 250" role="img" aria-label="Illustration: research papers connected to a central retrieval node">
+            <rect width="400" height="250" fill="#D8E9E8"/>
+            <g stroke="#0E7C7B" stroke-width="2" opacity=".5">
+              <line x1="200" y1="125" x2="86" y2="72"/><line x1="200" y1="125" x2="92" y2="182"/>
+              <line x1="200" y1="125" x2="308" y2="68"/><line x1="200" y1="125" x2="316" y2="178"/>
+            </g>
+            <g fill="#FBFCF8" stroke="#0E7C7B" stroke-width="2">
+              <rect x="52" y="44" width="56" height="46"/><rect x="56" y="156" width="56" height="46"/>
+              <rect x="286" y="40" width="56" height="46"/><rect x="292" y="152" width="56" height="46"/>
+            </g>
+            <g stroke="#0E7C7B" stroke-width="2.5" opacity=".65">
+              <line x1="61" y1="56" x2="99" y2="56"/><line x1="61" y1="66" x2="99" y2="66"/><line x1="61" y1="76" x2="85" y2="76"/>
+              <line x1="65" y1="168" x2="103" y2="168"/><line x1="65" y1="178" x2="103" y2="178"/><line x1="65" y1="188" x2="89" y2="188"/>
+              <line x1="295" y1="52" x2="333" y2="52"/><line x1="295" y1="62" x2="333" y2="62"/><line x1="295" y1="72" x2="319" y2="72"/>
+              <line x1="301" y1="164" x2="339" y2="164"/><line x1="301" y1="174" x2="339" y2="174"/><line x1="301" y1="184" x2="325" y2="184"/>
+            </g>
+            <circle cx="200" cy="125" r="38" fill="#0E7C7B"/>
+            <circle cx="194" cy="119" r="15" fill="none" stroke="#D8E9E8" stroke-width="4"/>
+            <line x1="205" y1="130" x2="216" y2="141" stroke="#D8E9E8" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+          <span class="plus" aria-hidden="true">+</span>
+          <span class="tile-body">
+            <span class="tile-tag">Applied AI / retrieval</span>
+            <span class="tile-title">Nebula Nexus research navigator</span>
+            <span class="tile-desc">Hybrid keyword and vector search across arXiv, answered by a locally hosted language model.</span>
+            <span class="tile-metric">73,040 papers indexed. Under 100 ms search.</span>
+          </span>
+        </button>
+
+        <!-- 5 -->
+        <button class="tile" data-project="poly" aria-haspopup="dialog">
+          <svg class="art" viewBox="0 0 400 250" role="img" aria-label="Illustration: the gap between a market price and an independent probability estimate">
+            <rect width="400" height="250" fill="#F6E7CE"/>
+            <rect x="40" y="112" width="320" height="26" fill="#FBFCF8" stroke="#B5700F" stroke-width="2"/>
+            <rect x="40" y="112" width="144" height="26" fill="#B5700F" opacity=".28"/>
+            <rect x="184" y="112" width="114" height="26" fill="#B5700F" opacity=".72"/>
+            <g stroke="#14181B" stroke-width="3">
+              <line x1="184" y1="92" x2="184" y2="158"/>
+              <line x1="298" y1="92" x2="298" y2="158"/>
+            </g>
+            <circle cx="184" cy="86" r="8" fill="#14181B"/>
+            <circle cx="298" cy="86" r="8" fill="#B3271E"/>
+            <g fill="#B5700F">
+              <rect x="40" y="182" width="52" height="10"/>
+              <rect x="106" y="182" width="52" height="10" opacity=".75"/>
+              <rect x="172" y="182" width="52" height="10" opacity=".5"/>
+              <rect x="238" y="182" width="52" height="10" opacity=".28"/>
+            </g>
+          </svg>
+          <span class="plus" aria-hidden="true">+</span>
+          <span class="tile-body">
+            <span class="tile-tag">Applied AI / agents</span>
+            <span class="tile-title">Polymarket analyst agent</span>
+            <span class="tile-desc">Four agents read a prediction market and its news, then estimate the odds without seeing the price.</span>
+            <span class="tile-metric">4 agents, 4 LLM calls per analysis.</span>
+          </span>
+        </button>
+
+        <!-- 6 -->
+        <button class="tile" data-project="report" aria-haspopup="dialog">
+          <svg class="art" viewBox="0 0 400 250" role="img" aria-label="Illustration: a computed report held for human approval">
+            <rect width="400" height="250" fill="#E1E2F3"/>
+            <rect x="96" y="34" width="180" height="188" fill="#FBFCF8" stroke="#4A4E9C" stroke-width="2"/>
+            <g stroke="#4A4E9C" stroke-width="3" opacity=".45">
+              <line x1="116" y1="60" x2="216" y2="60"/><line x1="116" y1="74" x2="256" y2="74"/><line x1="116" y1="88" x2="238" y2="88"/>
+            </g>
+            <g fill="#4A4E9C">
+              <rect x="116" y="146" width="22" height="42"/><rect x="148" y="126" width="22" height="62"/>
+              <rect x="180" y="158" width="22" height="30"/><rect x="212" y="110" width="22" height="78"/>
+            </g>
+            <line x1="116" y1="188" x2="256" y2="188" stroke="#4A4E9C" stroke-width="2"/>
+            <circle cx="290" cy="188" r="34" fill="#2C6E49"/>
+            <path d="M274 188 L285 200 L307 176" fill="none" stroke="#FBFCF8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="plus" aria-hidden="true">+</span>
+          <span class="tile-body">
+            <span class="tile-tag">Applied AI / reporting</span>
+            <span class="tile-title">AI recurring report generator</span>
+            <span class="tile-desc">A spreadsheet goes in, a drafted report with anomaly flags comes out — but only a human can mark it final.</span>
+            <span class="tile-metric">Every number computed in pandas, never by the model.</span>
+          </span>
+        </button>
+
+      </div>
+
+      <p class="sectionnote" style="margin-top:32px">Also on GitHub: <a href="https://github.com/l1n9d/OnlyFinance">OnlyFinance</a>, a financial education assistant — plus smaller experiments at <a href="https://github.com/l1n9d">github.com/l1n9d</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PATH ============ -->
+<section class="band" id="path">
+  <div class="wrap">
+    <div class="rail" aria-hidden="true"></div>
+    <div class="panel">
+      <p class="eyebrow">Background</p>
+      <h2 class="sectionhead">How I got here</h2>
+      <p class="sectionnote">Accounting, then financial crime, then engineering. The domain knowledge came first, which is unusual and is most of why I'm useful on a data team serving finance, risk, or compliance.</p>
+      <ul class="path">
+        <li><span class="when">2026 →</span><span class="what"><strong>Climate Intelligence Specialist — Tangelic</strong><span>Data and reporting for a climate-impact nonprofit running energy programs in rural Ghana.</span></span></li>
+        <li><span class="when">2023 – 2026</span><span class="what"><strong>M.S. Computer Science — Northeastern University</strong><span>GPA 3.82. Data engineering, distributed systems, and applied machine learning.</span></span></li>
+        <li><span class="when">Aug 2024 – Jul 2025</span><span class="what"><strong>Business Intelligence Analyst — Northeastern University, Dean's Office</strong><span>San Jose, CA. Built the reporting pipeline and the Tableau and Power BI dashboards behind enrollment, retention, and technology adoption metrics for 500+ users, and established the source-of-truth metric definitions academic leadership now works from.</span></span></li>
+        <li><span class="when">2018 – 2023</span><span class="what"><strong>Senior Financial Data Analyst — Hubei Jixin CPA Firm</strong><span>Wuhan, China. Primary analyst for 20+ corporate clients. Integrated multi-source financial data in SQL and Python, surfaced revenue and cash-flow anomalies, standardized metric definitions across engagements, and cut manual reporting effort by 60%.</span></span></li>
+        <li><span class="when">2009 – 2017</span><span class="what"><strong>Analytics, Middle Office — Société Générale</strong><span>Wuhan, China. Designed and tuned fraud and risk screening rules, then measured them against real outcomes — lift, catch rate, false-positive trade-offs. Assessed World-Check sanctions, PEP, and adverse-media data for coverage and signal value. Delivered reporting for a $43B acquisition integration.</span></span></li>
+        <li><span class="when">Earlier</span><span class="what"><strong>B.M. Accounting — Wuhan University of Technology</strong></span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STACK ============ -->
+<section class="band" id="stack">
+  <div class="wrap">
+    <div class="rail" aria-hidden="true"></div>
+    <div class="panel">
+      <p class="eyebrow">Tools</p>
+      <h2 class="sectionhead">What I work in</h2>
+      <p class="sectionnote">Listed by what I've shipped with, not what I've read about.</p>
+      <div class="grid">
+        <div class="cell"><h3>Warehouse &amp; modeling</h3><p>Snowflake, BigQuery, Databricks, dbt, advanced SQL, dimensional modeling, SCD Type 2, incremental models</p></div>
+        <div class="cell"><h3>Pipelines &amp; infrastructure</h3><p>Airflow, Kafka / Redpanda, Debezium, Kafka Connect, Snowpipe Streaming, Docker Compose, AWS RDS, GCP</p></div>
+        <div class="cell"><h3>Python</h3><p>pandas, FastAPI, Streamlit, SQLAlchemy, pytest, Gradio, requests, tenacity</p></div>
+        <div class="cell"><h3>BI &amp; reporting</h3><p>Tableau, Power BI, advanced Excel, KPI and metric definition, metric governance, self-service dashboards</p></div>
+        <div class="cell"><h3>Applied AI</h3><p>RAG with hybrid BM25 + vector retrieval, OpenSearch, sentence embeddings, CrewAI multi-agent pipelines, Ollama, Gemini</p></div>
+        <div class="cell"><h3>Testing &amp; evaluation</h3><p>dbt schema, singular and freshness tests; pytest with mocked HTTP; rule performance measured on lift, catch rate, and false-positive trade-offs; incident write-ups</p></div>
+        <div class="cell"><h3>Domain</h3><p>KYC/AML and financial crime, screening rule design and threshold tuning, World-Check sanctions/PEP/adverse media, accounting and financial reporting, macroeconomic indicators</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="band" id="contact">
+  <div class="wrap">
+    <div class="rail" aria-hidden="true"></div>
+    <div class="panel">
+      <p class="eyebrow">Contact</p>
+      <h2 class="sectionhead">Let's talk</h2>
+      <p class="sectionnote">Looking for data engineering, analytics engineering, or applied AI roles in the Bay Area or remote. Happy to walk through any project above.</p>
+      <ul class="contact-lines">
+        <li><span>Email</span><a href="mailto:linglingdeng000@gmail.com">linglingdeng000@gmail.com</a></li>
+        <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/linglingdeng/">/in/linglingdeng</a></li>
+        <li><span>GitHub</span><a href="https://github.com/l1n9d">github.com/l1n9d</a></li>
+        <li><span>Résumé</span><a href="resume.pdf">Download PDF</a></li>
+      </ul>
+      <footer>Built and hosted by me — no template, no site builder.</footer>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ MODAL ============ -->
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="sheet">
+    <button class="closebtn" id="closebtn" aria-label="Close project">✕</button>
+    <div class="sheet-head">
+      <p class="kicker" id="sheetKicker"></p>
+      <h2 id="sheetTitle"></h2>
+    </div>
+    <div class="sheet-body" id="sheetBody"></div>
+  </div>
+</div>
+
+<script>
+var PROJECTS = {
+  cdc: {
+    kicker: "Streaming / CDC",
+    title: "E-commerce change data capture pipeline",
+    stack: "Postgres (AWS RDS) · Debezium 2.7 · Redpanda · Kafka Connect · Snowpipe Streaming · Snowflake · dbt · Docker",
+    metrics: "<b>95</b> dbt tests passing &nbsp;·&nbsp; <b>~5–10s</b> commit to row visible &nbsp;·&nbsp; <b>19</b> commits",
+    body:
+      "<p>Replicates an operational Postgres database to Snowflake in near-real time using log-based change data capture, then turns the change stream into SCD Type 2 dimensions. Point-in-time fact joins mean an analyst can ask what a customer looked like on the day they placed an order, not just what they look like now.</p>" +
+      "<p>I wrote the SCD2 logic by hand with <code>LEAD(source_ts) OVER (PARTITION BY key ORDER BY lsn)</code> rather than using dbt snapshots, because a stream of LSN-ordered change events is a different shape from the polled current-state tables snapshots are designed for. Snowflake access is split across three least-privilege roles, so a leaked connector credential reaches one schema instead of the account.</p>" +
+      "<div class='note incident'><span class='label'>Incident — replication slot WAL retention</span>I stopped Kafka Connect overnight and came back to an RDS instance in <em>Storage-full</em>. The database held 12 MB; an inactive Debezium replication slot was pinning 19 GB of write-ahead log, because Postgres won't reclaim WAL that any slot still references. I upsized storage to recover, dropped the slot, then added storage autoscaling, a free-space alarm, and a rule about never parking a consumer without dropping its slot first.</div>" +
+      "<div class='note incident'><span class='label'>Incident — SCD2 temporal semantics</span>A relational-integrity test flagged 5,534 orders with no matching customer version. Snapshot rows were setting <code>valid_from</code> to when Debezium observed the row rather than when the row began existing in the source, so customers appeared to be created years after their own orders. Schema tests passed this silently — only a singular semantic test caught it.</div>",
+    links: [
+      ["Repository ↗","https://github.com/l1n9d/ecommerce_cdc"],
+      ["Incident write-up ↗","https://github.com/l1n9d/ecommerce_cdc/blob/main/docs/storage-full-incident-2026-04-29.md"]
+    ]
+  },
+  fred: {
+    kicker: "Analytics engineering",
+    title: "FRED economic indicators pipeline",
+    stack: "Python 3.11 · FRED API · Snowflake · dbt 1.11 · Airflow 3 · Streamlit · Plotly · pytest · Docker Compose",
+    metrics: "<b>23</b> dbt tests &nbsp;·&nbsp; <b>14</b> pytest tests &nbsp;·&nbsp; <b>7</b> scheduled runs, zero failures",
+    body:
+      "<p>Pulls six U.S. economic series from the Federal Reserve, models them through staging → intermediate → marts in Snowflake, and surfaces a recession risk view in Streamlit. The signal layer implements five established indicators — the Sahm Rule, yield curve inversion, high inflation, low consumer sentiment, and Fed tightening — rolled into a composite risk level.</p>" +
+      "<p>Ingestion uses MERGE upserts so the pipeline is safely re-runnable, and each series fails independently so one bad API call doesn't sink the run. Airflow runs it daily at 06:00 UTC with per-task timeouts and a failure callback.</p>" +
+      "<div class='note'><span class='label'>Trade-off — thresholds as configuration</span>Every signal threshold lives in <code>dbt_project.yml</code> variables rather than inside the SQL. Changing what counts as high inflation is a config edit and a re-run, not a model rewrite — which is what makes the thresholds testable at all.</div>",
+    links: [["Repository ↗","https://github.com/l1n9d/fred-financial-pipeline"]]
+  },
+  nebula: {
+    kicker: "Applied AI / retrieval",
+    title: "Nebula Nexus — arXiv research navigator",
+    stack: "FastAPI · OpenSearch 2.19 · PostgreSQL 16 · Redis · Ollama (Llama 3.2) · Sentence Transformers · Gradio · Airflow · Docker",
+    metrics: "<b>73,040</b> papers &nbsp;·&nbsp; <b>&lt;100ms</b> BM25, <b>&lt;500ms</b> hybrid &nbsp;·&nbsp; <b>85–90%</b> cache hits",
+    body:
+      "<p>A retrieval system over 73,000 arXiv papers that combines BM25 keyword search with k-NN vector similarity, then streams answers from a locally hosted Llama 3.2. Airflow keeps the index fed, Redis absorbs repeat queries, and the whole stack comes up with one Docker Compose command.</p>" +
+      "<div class='note'><span class='label'>Trade-off — local inference over an API</span>Running the model locally means zero per-query cost and no text leaving the machine, at the price of answer quality against a frontier model. For a retrieval-heavy workload where the search layer does most of the work, that was the right side of the trade — and it made the system something I could run continuously instead of in demos.</div>",
+    links: [["Repository ↗","https://github.com/l1n9d/nebula-nexus"]]
+  },
+  poly: {
+    kicker: "Applied AI / agents",
+    title: "Polymarket analyst agent",
+    stack: "CrewAI · Gemini 2.5 Flash · Polymarket Gamma API · DuckDuckGo Search · Python 3.11",
+    metrics: "<b>4</b> agents, <b>4</b> LLM calls per run &nbsp;·&nbsp; <b>&lt;5 min</b> per market",
+    body:
+      "<p>Four sequential agents — market interpreter, news analyst, probability estimator, alpha finder — read a prediction market and its surrounding news, form an independent probability estimate, and compare it against the market price. The output is a structured report with a verdict, a confidence score, the three drivers behind it, and what would make the estimate wrong.</p>" +
+      "<div class='note'><span class='label'>Constraint — free-tier quota shaped the architecture</span>Giving agents their own search tools costs 8–12 round trips per run and burns a daily quota in two analyses. Moving all fetching into plain Python and handing agents pre-fetched data brought it to exactly one call each. The probability estimator also never sees the market price, so it can't anchor to it.</div>",
+    links: [["Repository ↗","https://github.com/l1n9d/polymarket-analyst-agent"]]
+  },
+  report: {
+    kicker: "Applied AI / reporting",
+    title: "AI recurring report generator",
+    stack: "Python · pandas · Streamlit · SQLite · Anthropic or Gemini API, with a deterministic offline fallback · pytest",
+    metrics: "<b>5</b>-stage workflow &nbsp;·&nbsp; <b>0</b> arithmetic done by the model &nbsp;·&nbsp; runs with <b>no</b> API key",
+    body:
+      "<p>Finance and operations teams rebuild the same report every week by hand — pull the data, compute the numbers, write the narrative, spot what looks off. This drafts all of that and tracks it, while keeping a human in charge of the final version. Upload a CSV, pick a template, and it computes four to six metrics against the prior period, drafts the narrative, and produces an <em>anomalies to check</em> list that pairs each flagged movement with something specific to verify.</p>" +
+      "<p>Report status lives in a SQLite store as the single source of truth — Draft, In Review, Final — with an append-only audit log behind every transition. If no API key is present the app falls back to deterministic rule-based drafting rather than failing, and the interface is explicit about which mode wrote the text. Everything runs on synthetic data by design; the project never touches real customer records.</p>" +
+      "<div class='note'><span class='label'>Constraint — the model narrates, it never calculates</span>Every number is computed in pandas and handed to the model as a fact. The language layer only decides how to say it, and the system prompts forbid inventing values. That boundary removes an entire class of hallucinated-figure risk — which, coming from compliance, is the only kind of reporting I know how to build.</div>" +
+      "<div class='note'><span class='label'>Design — the gate is enforced in the store, not the UI</span>Stale data, missing periods, or a truncated latest period block approval to Final, and the check lives in the data layer so it can't be clicked past. The repo ships a deliberately broken sample file whose last week is cut short, so anyone cloning it can watch the gate fire and read the specific reason it refused.</div>",
+    links: [
+      ["Repository ↗","https://github.com/l1n9d/ai-report-generator"],
+      ["Live demo ↗","https://ai-reports-generator.streamlit.app"],
+      ["Walkthrough ↗","https://github.com/l1n9d/ai-report-generator/blob/master/WALKTHROUGH.md"]
+    ]
+  }
+};
+
+(function(){
+  var overlay = document.getElementById('overlay');
+  var closebtn = document.getElementById('closebtn');
+  var kicker = document.getElementById('sheetKicker');
+  var title = document.getElementById('sheetTitle');
+  var bodyEl = document.getElementById('sheetBody');
+  var lastFocus = null;
+
+  function render(key){
+    var p = PROJECTS[key];
+    if(!p) return false;
+    kicker.textContent = p.kicker;
+    title.textContent = p.title;
+    var html = p.body +
+      "<p class='sheet-stack'>" + p.stack + "</p>" +
+      "<p class='sheet-metrics'>" + p.metrics + "</p><p class='links'>";
+    p.links.forEach(function(l){ html += "<a href='" + l[1] + "'>" + l[0] + "</a>"; });
+    bodyEl.innerHTML = html + "</p>";
+    return true;
+  }
+
+  function open(key, push){
+    if(!render(key)) return;
+    lastFocus = document.activeElement;
+    overlay.classList.add('on');
+    document.body.classList.add('locked');
+    overlay.scrollTop = 0;
+    closebtn.focus();
+    if(push !== false) history.replaceState(null, '', '#project-' + key);
+  }
+
+  function close(){
+    overlay.classList.remove('on');
+    document.body.classList.remove('locked');
+    if(location.hash.indexOf('#project-') === 0) history.replaceState(null, '', location.pathname);
+    if(lastFocus) lastFocus.focus();
+  }
+
+  document.querySelectorAll('.tile').forEach(function(t){
+    t.addEventListener('click', function(){ open(t.getAttribute('data-project')); });
+  });
+  closebtn.addEventListener('click', close);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) close(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && overlay.classList.contains('on')) close(); });
+
+  // Deep link: /#project-cdc opens that project directly.
+  if(location.hash.indexOf('#project-') === 0){ open(location.hash.replace('#project-',''), false); }
+
+  // Section reveal
+  var bands = document.querySelectorAll('.band');
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)){
+    bands.forEach(function(b){ b.classList.add('is-live'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('is-live'); io.unobserve(en.target); }
+      });
+    }, { rootMargin:'0px 0px -12% 0px', threshold:0.06 });
+    bands.forEach(function(b){ io.observe(b); });
+    document.getElementById('intro').classList.add('is-live');
+  }
+})();
+</script>
+
+</body>
+</html>
