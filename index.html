@@ -132,9 +132,17 @@ code{font-family:var(--mono);font-size:.86em;background:var(--paper);padding:1px
 .cell p{margin:0;font-size:.95em;line-height:1.65}
 
 /* ---------- contact ---------- */
-.contact-lines{list-style:none;margin:26px 0 0;padding:0;max-width:46ch}
-.contact-lines li{display:flex;justify-content:space-between;gap:20px;padding:11px 0;border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:12.5px}
-.contact-lines span{color:var(--muted);letter-spacing:.12em;text-transform:uppercase;font-size:10.5px;padding-top:.25em}
+.contact-icons{list-style:none;margin:30px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:14px}
+.contact-icons a{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;
+  width:96px;padding:18px 6px 14px;border:1px solid var(--rule);background:var(--surface);
+  color:var(--ink);text-decoration:none;
+  transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease;
+}
+.contact-icons a:hover{background:var(--ink);color:var(--surface);border-color:var(--ink);transform:translateY(-3px)}
+.contact-icons svg{width:26px;height:26px;display:block}
+.contact-icons span{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase}
+@media (prefers-reduced-motion:reduce){.contact-icons a:hover{transform:none}}
 footer{padding:26px 0 40px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 
 /* ---------- motion ---------- */
@@ -351,8 +359,8 @@ footer{padding:26px 0 40px;font-family:var(--mono);font-size:11px;letter-spacing
       <h2 class="sectionhead">How I got here</h2>
       <p class="sectionnote">Accounting, then financial crime, then engineering. The domain knowledge came first, which is unusual and is most of why I'm useful on a data team serving finance, risk, or compliance.</p>
       <ul class="path">
-        <li><span class="when">2026 →</span><span class="what"><strong>Climate Intelligence Specialist — Tangelic</strong><span>Data and reporting for a climate-impact nonprofit running energy programs in rural Ghana.</span></span></li>
-        <li><span class="when">2023 – 2026</span><span class="what"><strong>M.S. Computer Science — Northeastern University</strong><span>GPA 3.82. Data engineering, distributed systems, and applied machine learning.</span></span></li>
+        <li><span class="when">2026 →</span><span class="what"><strong>Climate Intelligence Specialist — Tangelic</strong><span>Volunteer. Data and reporting for a climate-impact nonprofit running energy programs in rural Ghana.</span></span></li>
+        <li><span class="when">2024 – 2026</span><span class="what"><strong>M.S. Computer Science — Northeastern University</strong><span>GPA 3.82. Data engineering, distributed systems, and applied machine learning.</span></span></li>
         <li><span class="when">Aug 2024 – Jul 2025</span><span class="what"><strong>Business Intelligence Analyst — Northeastern University, Dean's Office</strong><span>San Jose, CA. Built the reporting pipeline and the Tableau and Power BI dashboards behind enrollment, retention, and technology adoption metrics for 500+ users, and established the source-of-truth metric definitions academic leadership now works from.</span></span></li>
         <li><span class="when">2018 – 2023</span><span class="what"><strong>Senior Financial Data Analyst — Hubei Jixin CPA Firm</strong><span>Wuhan, China. Primary analyst for 20+ corporate clients. Integrated multi-source financial data in SQL and Python, surfaced revenue and cash-flow anomalies, standardized metric definitions across engagements, and cut manual reporting effort by 60%.</span></span></li>
         <li><span class="when">2009 – 2017</span><span class="what"><strong>Analytics, Middle Office — Société Générale</strong><span>Wuhan, China. Designed and tuned fraud and risk screening rules, then measured them against real outcomes — lift, catch rate, false-positive trade-offs. Assessed World-Check sanctions, PEP, and adverse-media data for coverage and signal value. Delivered reporting for a $43B acquisition integration.</span></span></li>
@@ -391,11 +399,42 @@ footer{padding:26px 0 40px;font-family:var(--mono);font-size:11px;letter-spacing
       <p class="eyebrow">Contact</p>
       <h2 class="sectionhead">Let's talk</h2>
       <p class="sectionnote">Looking for data engineering, analytics engineering, or applied AI roles in the Bay Area or remote. Happy to walk through any project above.</p>
-      <ul class="contact-lines">
-        <li><span>Email</span><a href="mailto:linglingdeng000@gmail.com">linglingdeng000@gmail.com</a></li>
-        <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/linglingdeng/">/in/linglingdeng</a></li>
-        <li><span>GitHub</span><a href="https://github.com/l1n9d">github.com/l1n9d</a></li>
-        <li><span>Résumé</span><a href="resume.pdf">Download PDF</a></li>
+      <ul class="contact-icons">
+        <li><a href="mailto:linglingdeng000@gmail.com" title="Email Lingling Deng">
+          <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+            <rect x="3" y="7" width="26" height="18" rx="1.5" fill="none" stroke="currentColor" stroke-width="2.2"/>
+            <path d="M4 9 L16 18 L28 9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+          </svg>
+          <span>Email</span></a></li>
+
+        <li><a href="https://www.linkedin.com/in/linglingdeng/" title="LinkedIn profile">
+          <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+            <rect x="3" y="3" width="26" height="26" rx="3" fill="none" stroke="currentColor" stroke-width="2.2"/>
+            <circle cx="10" cy="10.5" r="1.9" fill="currentColor"/>
+            <rect x="8.4" y="14" width="3.2" height="10" fill="currentColor"/>
+            <path d="M15.5 24 V14 h3.2 v1.4 a3.7 3.7 0 0 1 6.6 2.4 V24 h-3.2 v-5.6 a1.9 1.9 0 0 0-3.4-1.1 V24 Z" fill="currentColor"/>
+          </svg>
+          <span>LinkedIn</span></a></li>
+
+        <li><a href="https://github.com/l1n9d" title="GitHub profile">
+          <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+            <circle cx="9" cy="7.5" r="3.6" fill="none" stroke="currentColor" stroke-width="2.2"/>
+            <circle cx="9" cy="24.5" r="3.6" fill="none" stroke="currentColor" stroke-width="2.2"/>
+            <circle cx="23" cy="11.5" r="3.6" fill="none" stroke="currentColor" stroke-width="2.2"/>
+            <path d="M9 11.1 V20.9" fill="none" stroke="currentColor" stroke-width="2.2"/>
+            <path d="M23 15.1 v1.4 a4 4 0 0 1-4 4 h-6.4" fill="none" stroke="currentColor" stroke-width="2.2"/>
+          </svg>
+          <span>GitHub</span></a></li>
+
+        <li><a href="resume.pdf" title="Download résumé (PDF)">
+          <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+            <path d="M7 3 h12 l6 6 v9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M7 3 v26 h18 v-4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M19 3 v6 h6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M11 12 h7 M11 16.5 h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M23 19 v6 m-3-3 l3 3 l3-3" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Résumé</span></a></li>
       </ul>
       <footer>Built and hosted by me — no template, no site builder.</footer>
     </div>
